@@ -1,64 +1,39 @@
-(function () {
-  'use strict';
+/* ============================================================
+   FAMRA STUDIO — Interaction System
+   ============================================================ */
 
-  // 1. Marcar el link activo en la navegación
-  function setActiveNav() {
-    const path = window.location.pathname.split('/').pop() || 'index.html';
-    const links = document.querySelectorAll('.site-nav a');
-    links.forEach(link => {
-      if (link.getAttribute('href') === path) {
-        link.classList.add('active');
-      }
-    });
-  }
-
-  // 2. Efecto de Header al hacer scroll
-  function initHeaderScroll() {
-    const header = document.querySelector('.site-header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    }, { passive: true });
-  }
-
-  // 3. Menú Móvil (Toggle)
-  function initMobileNav() {
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.site-nav');
-    if (!toggle || !nav) return;
-
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      toggle.classList.toggle('open');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-  }
-
-  // 4. Scroll Reveal (Aparición de elementos)
-  function initScrollReveal() {
-    const reveals = document.querySelectorAll('.reveal');
+document.addEventListener('DOMContentLoaded', () => {
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Solo se anima una vez
+    // --- 1. SCROLL REVEAL SYSTEM ---
+    // Detecta elementos con la clase .reveal y los activa al entrar en el viewport
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85; // Se activa al 85% de la pantalla
+
+        revealElements.forEach(el => {
+            const elTop = el.getBoundingClientRect().top;
+
+            if (elTop < triggerBottom) {
+                el.classList.add('visible');
+            }
+        });
+    };
+
+    // Ejecutar al cargar y al hacer scroll
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // --- 2. ACTIVE NAVIGATION SYSTEM ---
+    // Resalta el enlace actual en el menú basándose en la URL del archivo
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll('.site-nav a');
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
         }
-      });
-    }, { threshold: 0.15 });
+    });
 
-    reveals.forEach(el => observer.observe(el));
-  }
-
-  // Inicialización de todas las funciones
-  document.addEventListener('DOMContentLoaded', () => {
-    setActiveNav();
-    initHeaderScroll();
-    initMobileNav();
-    initScrollReveal();
-  });
-
-})();
+    console.log("FAMRA Studio System: Active & Clean");
+});
