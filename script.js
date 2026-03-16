@@ -1,39 +1,37 @@
-/* ============================================================
-   FAMRA STUDIO — Interaction System
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. SCROLL REVEAL SYSTEM ---
-    // Detecta elementos con la clase .reveal y los activa al entrar en el viewport
-    const revealElements = document.querySelectorAll('.reveal');
+    const cursor = document.getElementById('custom-cursor');
 
-    const revealOnScroll = () => {
-        const triggerBottom = window.innerHeight * 0.85; // Se activa al 85% de la pantalla
-
-        revealElements.forEach(el => {
-            const elTop = el.getBoundingClientRect().top;
-
-            if (elTop < triggerBottom) {
-                el.classList.add('visible');
-            }
+    // --- MOUSE TRACKING ---
+    document.addEventListener('mousemove', (e) => {
+        window.requestAnimationFrame(() => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
         });
-    };
-
-    // Ejecutar al cargar y al hacer scroll
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-
-    // --- 2. ACTIVE NAVIGATION SYSTEM ---
-    // Resalta el enlace actual en el menú basándose en la URL del archivo
-    const currentPath = window.location.pathname.split("/").pop();
-    const navLinks = document.querySelectorAll('.site-nav a');
-
-    navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-            link.classList.add('active');
-        }
     });
 
-    console.log("FAMRA Studio System: Active & Clean");
+    // --- HOVER INTERACTIONS ---
+    const interactives = document.querySelectorAll('a, button, .next-box, .styled-img');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+    });
+
+    // --- SCROLL REVEAL ---
+    const revealElements = document.querySelectorAll('.two-column-layout, .divider');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(40px)";
+        el.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+        observer.observe(el);
+    });
 });

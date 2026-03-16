@@ -3,66 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frama Studio — Foundation</title>
+    <title>FAMRA | Branding Resource</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div id="custom-cursor"></div>
+
     <header class="site-header">
-        <a href="index.html" class="logo">
+        <a href="index.html" class="logo-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="131 770 1800 450">
                 <g>
-                    <path fill="#000" d="M429.07,852.6h39.75c48.39,0,69.71,17.86,69.71,59.92,0,38.6-19.59,58.19-68.56,58.19h-40.9v-90.34c-26.29,1.22-52.61,1.63-78.93,1.72v311.57h78.93v-161.31h38.6l99.67,161.31h81.81l4.03-8.64-107.73-167.07c44.94-16.71,70.29-53.58,70.29-106.58,0-82.96-47.82-125.02-140.57-125.02H131v407.31h78.93v-169.38l83.07-1.62,18-63-101.07-1.05v-103.12c73.05-.96,146.1-1.92,219.15-2.88Z"/>
-                    <path fill="#000" d="M947.84,1106.09l28.23,87.57h85.84l1.73-2.3-142.3-405h-88.72l-144.03,405,2.3,2.3h84.69c9.41-29.19,18.82-58.38,28.23-87.57,6.34-19.59,12.67-39.18,19.01-58.76,9.41-29.19,18.82-58.38,28.23-87.57,8.06-27.65,17.86-63.95,23.62-96.21h1.15c6.34,32.26,15.55,68.56,24.2,96.21l28.23,87.57"/>
-                    <path fill="#000" d="M1105.68,1193.65v-407.31h99.67l103.12,228.14h1.15l103.12-228.14h99.09v407.31h-77.77v-180.32c0-40.33.58-82.96,1.73-123.86h-1.73c-14.4,32.26-29.38,64.52-44.36,96.79l-74.89,159.01h-12.67l-74.32-159.01c-14.98-32.26-29.96-64.52-44.36-96.79h-1.73c.58,40.9,1.15,83.53,1.15,123.86l.58,180.32h-77.78Z"/>
-                    <path fill="#000" d="M1812.56,1106.09c9.63,29.12,19.03,58.31,28.23,87.57h85.84l1.73-2.3-142.3-405h-88.72l-144.03,405,2.3,2.3h84.69c9.41-29.19,18.82-58.38,28.23-87.57,6.34-19.59,12.67-39.18,19.01-58.76,9.41-29.19,18.82-58.38,28.23-87.57,8.07-27.65,17.86-63.95,23.62-96.21h1.15c6.34,32.26,15.55,68.56,24.2,96.21,9.19,29.26,18.6,58.45,28.23,87.57,7.21,21.8,11.08,33.03,19.59,58.76Z"/>
+                  <path fill="#000" d="M429.07,852.6h39.75c48.39,0,69.71,17.86,69.71,59.92,0,38.6-19.59,58.19-68.56,58.19h-40.9v-90.34c-26.29,1.22-52.61,1.63-78.93,1.72v311.57h78.93v-161.31h38.6l99.67,161.31h81.81l4.03-8.64-107.73-167.07c44.94-16.71,70.29-53.58,70.29-106.58,0-82.96-47.82-125.02-140.57-125.02H131v407.31h78.93v-169.38l83.07-1.62,18-63-101.07-1.05v-103.12c73.05-.96,146.1-1.92,219.15-2.88Z"/>
+                  <path fill="#000" d="M947.84,1106.09l28.23,87.57h85.84l1.73-2.3-142.3-405h-88.72l-144.03,405,2.3,2.3h84.69c9.41-29.19,18.82-58.38,28.23-87.57,6.34-19.59,12.67-39.18,19.01-58.76,9.41-29.19,18.82-58.38,28.23-87.57,8.06-27.65,17.86-63.95,23.62-96.21h1.15c6.34,32.26,15.55,68.56,24.2,96.21l28.23,87.57"/>
+                  <path fill="#000" d="M1105.68,1193.65v-407.31h99.67l103.12,228.14h1.15l103.12-228.14h99.09v407.31h-77.77v-180.32c0-40.33.58-82.96,1.73-123.86h-1.73c-14.4,32.26-29.38,64.52-44.36,96.79l-74.89,159.01h-12.67l-74.32-159.01c-14.98-32.26-29.96-64.52-44.36-96.79h-1.73c.58,40.9,1.15,83.53,1.15,123.86l.58,180.32h-77.78Z"/>
+                  <path fill="#000" d="M1812.56,1106.09c9.63,29.12,19.03,58.31,28.23,87.57h85.84l1.73-2.3-142.3-405h-88.72l-144.03,405,2.3,2.3h84.69c9.41-29.19,18.82-58.38,28.23-87.57,6.34-19.59,12.67-39.18,19.01-58.76,9.41-29.19,18.82-58.38,28.23-87.57,8.07-27.65,17.86-63.95,23.62-96.21h1.15c6.34,32.26,15.55,68.56,24.2,96.21,9.19,29.26,18.6,58.45,28.23,87.57,7.21,21.8,11.08,33.03,19.59,58.76Z"/>
                 </g>
             </svg>
         </a>
         <nav class="site-nav">
             <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
+            <a href="about.html">About</a>
             <a href="history.html">History</a>
-            <a href="recipe.html">Recipe</a>
-            <a href="today.html">Today</a>
+            <a href="today.html">Modern</a>
         </nav>
     </header>
 
-    <main class="content-wrapper">
-        <section class="section reveal">
-            <div class="two-column-layout">
-                <div class="col-left">
-                    <span class="label">01 / Foundation</span>
-                    <h1>What is Branding?</h1>
-                </div>
-                <div class="col-right">
-                    <h3>Purpose</h3>
-                    <p>Brief definition of the strategic reason behind brand development.</p>
-                    <br><br>
-                    <h3>The Pillars</h3>
-                    <p>Core elements that support a cohesive and functional identity system.</p>
-                </div>
+    <main class="container">
+        <section class="two-column-layout">
+            <div class="step-info">
+                <span class="step-number">The Method</span>
+                <h1 class="hero-title">The Branding Recipe.</h1>
+                <p>Metodología estratégica para identidades visuales contemporáneas.</p>
+            </div>
+            <div class="step-visual">
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop" class="styled-img" alt="Branding">
             </div>
         </section>
 
-        <section class="next-navigation reveal">
-            <a href="index.html" class="teaser next-box">
-                <span class="num">← Back</span>
-                <h3>Home</h3>
-            </a>
-            <a href="history.html" class="teaser next-box right">
-                <span class="num">Next →</span>
-                <h3>History</h3>
-            </a>
+        <div class="divider"></div>
+
+        <section class="two-column-layout">
+            <div class="step-info">
+                <span class="step-number">01. Strategy</span>
+                <h3>Define the Core Purpose</h3>
+                <p>Identificación de valores intrínsecos para asegurar coherencia estructural.</p>
+            </div>
+            <div class="step-visual">
+                <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800&auto=format&fit=crop" class="styled-img" alt="Strategy">
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="two-column-layout">
+            <div class="step-info">
+                <span class="step-number">02. Visuals</span>
+                <h3>The Design Language</h3>
+                <p>Sistemas tipográficos y cromáticos adaptados a audiencias globales.</p>
+            </div>
+            <div class="step-visual">
+                <img src="https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=800&auto=format&fit=crop" class="styled-img" alt="Design">
+            </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-inner">
-            <span>Frama Studio</span>
-            <span>OCAD University</span>
-        </div>
+    <footer class="next-navigation">
+        <a href="today.html" class="next-box">
+            <span class="nav-label">Discover</span>
+            <h2>Modern Branding</h2>
+        </a>
+        <a href="about.html" class="next-box right">
+            <span class="nav-label">Learn More</span>
+            <h2>About Project</h2>
+        </a>
     </footer>
 
     <script src="script.js"></script>
