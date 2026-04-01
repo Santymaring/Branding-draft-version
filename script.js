@@ -1,24 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    const cursor = document.getElementById('custom-cursor');
+    // --- 1. SMOOTH CURSOR MOVEMENT ---
+    const cursor = document.querySelector('#custom-cursor');
+    let posX = 0, posY = 0;
+    let mouseX = 0, mouseY = 0;
 
-    // --- MOUSE TRACKING ---
     document.addEventListener('mousemove', (e) => {
-        window.requestAnimationFrame(() => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+        // Use Lerp (0.15) for a "lazy" high-end studio feel
+        posX += (mouseX - posX) * 0.15;
+        posY += (mouseY - posY) * 0.15;
+        
+        cursor.style.left = posX + 'px';
+        cursor.style.top = posY + 'px';
+        
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // --- 2. CURSOR INTERACTIONS ---
+    const links = document.querySelectorAll('a, .styled-img, .next-box');
+    
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            cursor.style.width = '70px';
+            cursor.style.height = '70px';
+            cursor.style.backgroundColor = 'rgba(0,0,0,0.1)';
+            cursor.style.border = '1px solid #000';
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            cursor.style.width = '20px';
+            cursor.style.height = '20px';
+            cursor.style.backgroundColor = '#000';
+            cursor.style.border = 'none';
         });
     });
 
-    // --- HOVER INTERACTIONS ---
-    const interactives = document.querySelectorAll('a, button, .next-box, .styled-img');
-    interactives.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-    });
-
-    // --- SCROLL REVEAL ---
-    const revealElements = document.querySelectorAll('.two-column-layout, .divider');
+    // --- 3. SCROLL REVEAL EFFECT ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -26,12 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.transform = "translateY(0)";
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
-    revealElements.forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(40px)";
-        el.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
-        observer.observe(el);
+    const items = document.querySelectorAll('.two-column-layout, .timeline-section, .divider');
+    items.forEach(item => {
+        item.style.opacity = "0";
+        item.style.transform = "translateY(50px)";
+        item.style.transition = "all 1.2s cubic-bezier(0.16, 1, 0.3, 1)";
+        observer.observe(item);
     });
 });
